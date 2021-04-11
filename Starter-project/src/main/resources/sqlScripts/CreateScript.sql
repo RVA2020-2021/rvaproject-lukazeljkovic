@@ -3,10 +3,10 @@ DROP TABLE IF EXISTS liga CASCADE;
 DROP TABLE IF EXISTS igrac CASCADE;
 DROP TABLE IF EXISTS tim CASCADE;
 
-DROP SEQUENCE IF EXISTS artikl_seq;
-DROP SEQUENCE IF EXISTS dobavljac_seq;
-DROP SEQUENCE IF EXISTS porudzbina_seq;
-DROP SEQUENCE IF EXISTS stavka_porudzbine_seq;
+DROP SEQUENCE IF EXISTS igrac_seq;
+DROP SEQUENCE IF EXISTS nacionalnost_seq;
+DROP SEQUENCE IF EXISTS liga_seq;
+DROP SEQUENCE IF EXISTS tim_seq;
 
 CREATE TABLE nacionalnost(
 	id integer not null,
@@ -57,11 +57,11 @@ CREATE INDEX idxfk_tim_liga ON tim(liga);
 CREATE INDEX idxfk_igrac_nacionalnost ON igrac(nacionalnost);
 CREATE INDEX idxfk_igrac_tim ON igrac(tim);
 
-CREATE SEQUENCE artikl_seq
+CREATE SEQUENCE igrac_seq
 INCREMENT 1;
-CREATE SEQUENCE dobavljac_seq
+CREATE SEQUENCE liga_seq
 INCREMENT 1;
-CREATE SEQUENCE porudzbina_seq
+CREATE SEQUENCE nacionalnost_seq
 INCREMENT 1;
-CREATE SEQUENCE stavka_porudzbine_seq
+CREATE SEQUENCE tim_seq
 INCREMENT 1;

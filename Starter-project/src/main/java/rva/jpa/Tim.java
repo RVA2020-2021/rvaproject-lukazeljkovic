@@ -21,7 +21,7 @@ public class Tim implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TIM_ID_GENERATOR", sequenceName="TIM_SEQ")
+	@SequenceGenerator(name="TIM_ID_GENERATOR", sequenceName="TIM_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TIM_ID_GENERATOR")
 	private Integer id;
 
