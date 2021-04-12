@@ -74,6 +74,7 @@ public class IgracResController {
 		igracRepository.save(igrac);
 		return new ResponseEntity<Igrac>(HttpStatus.OK);
 	}
+	//test1
 
 	
 	@DeleteMapping("igrac/{id}")
