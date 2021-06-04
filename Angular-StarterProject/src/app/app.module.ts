@@ -21,6 +21,13 @@ import { IgracComponent } from './components/igrac/igrac.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { NacionalnostDialogComponent } from './components/dialogs/nacionalnost-dialog/nacionalnost-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog'
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component'
+
 
 
 @NgModule({
@@ -32,7 +39,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     LigaComponent,
     TimComponent,
     NacionalnostComponent,
-    IgracComponent
+    IgracComponent,
+    NacionalnostDialogComponent,
+    LigaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTableModule,
     HttpClientModule,
     MatToolbarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
