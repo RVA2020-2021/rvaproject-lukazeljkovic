@@ -29,7 +29,7 @@ export class LigaDialogComponent implements OnInit {
       this.snackBar.open('Doslo je do greske prilikom dodavanja nove lige', 'Zatvori', {duration: 2500})
     }
   }
-
+//s
   public updateLiga(): void {
     this.ligaService.updateLiga(this.data).subscribe(() => {
       this.snackBar.open('Uspesno modifikovana liga: ' + this.data.naziv, 'OK', {duration: 2500})

@@ -26,7 +26,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog'
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component'
+import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialog.component';
+import { TimDialogComponent } from './components/dialogs/tim-dialog/tim-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -41,7 +45,8 @@ import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialo
     NacionalnostComponent,
     IgracComponent,
     NacionalnostDialogComponent,
-    LigaDialogComponent
+    LigaDialogComponent,
+    TimDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,10 @@ import { LigaDialogComponent } from './components/dialogs/liga-dialog/liga-dialo
     MatSnackBarModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
