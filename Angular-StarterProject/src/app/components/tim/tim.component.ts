@@ -17,6 +17,7 @@ export class TimComponent implements OnInit, OnDestroy {
   displayedColumns = ['id','naziv','osnovan','sediste','liga','actions']
   dataSource : MatTableDataSource<Tim>
   subscription : Subscription
+  selektovatiTim: Tim;
   constructor(private timService : TimService, private dialog: MatDialog) { }
 
 
@@ -53,6 +54,11 @@ export class TimComponent implements OnInit, OnDestroy {
         this.loadData()
       }
     })
+  }
+
+  selectRow(row)
+  {
+    this.selektovatiTim = row;
   }
 
 }
