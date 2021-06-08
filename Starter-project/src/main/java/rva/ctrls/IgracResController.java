@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import rva.jpa.Igrac;
+import rva.jpa.Tim;
 import rva.repository.IgracRepository;
+import rva.repository.TimRepository;
 
 @CrossOrigin
 @RestController
@@ -27,6 +29,9 @@ public class IgracResController {
 	
 	@Autowired
 	private IgracRepository igracRepository;
+	
+	@Autowired
+	private TimRepository timRepository;
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -43,6 +48,13 @@ public class IgracResController {
 	public Igrac getIgrac(@PathVariable("id") Integer id)
 	{
 		return igracRepository.getOne(id);
+	}
+	
+	@GetMapping("igracTim/{id}")
+	@ApiOperation(value="Vraca kolekciju igraca koji su u istom timu")
+	public Collection<Igrac> getIgracbyTim(@PathVariable ("id") Integer id) {
+		Tim t = timRepository.getOne(id);
+		return igracRepository.findByTim(t);
 	}
 	
 	@GetMapping("igracIme/{ime}")

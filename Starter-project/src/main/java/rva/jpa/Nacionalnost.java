@@ -30,7 +30,7 @@ public class Nacionalnost implements Serializable {
 
 	@JsonIgnore
 	//bi-directional many-to-one association to Igrac
-	@OneToMany(mappedBy="nacionalnost")
+	@OneToMany(mappedBy="nacionalnost", cascade = {CascadeType.DETACH,CascadeType.REMOVE})
 	private List<Igrac> igracs;
 
 	public Nacionalnost() {
