@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 
@@ -18,6 +20,9 @@ export class TimComponent implements OnInit, OnDestroy {
   dataSource : MatTableDataSource<Tim>
   subscription : Subscription
   selektovatiTim: Tim;
+
+  @ViewChild(MatSort,{static:false}) sort:MatSort
+  @ViewChild(MatPaginator,{static:false}) paginator:MatPaginator
   constructor(private timService : TimService, private dialog: MatDialog) { }
 
 
@@ -35,6 +40,25 @@ export class TimComponent implements OnInit, OnDestroy {
     this.timService.getAllTims().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.filterPredicate = (data, filter: string) =>{
+          const accumulator = (currentTerm, key) => {
+            return key === 'liga' ? currentTerm + data.liga.naziv : currentTerm + data[key];
+          }
+          const dataStr = Object.keys(data).reduce(accumulator,'').toLowerCase();
+          const transformedFilter = filter.trim().toLowerCase();
+          return dataStr.indexOf(transformedFilter) !== -1;
+        };
+
+        this.dataSource.sortingDataAccessor = (data, property) => {
+          switch(property) {
+            case 'liga': return data.liga.naziv.toLowerCase();
+
+            default: return data[property];
+          }
+        };
+
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
     ),
     (error: Error) => {
@@ -59,6 +83,14 @@ export class TimComponent implements OnInit, OnDestroy {
   selectRow(row)
   {
     this.selektovatiTim = row;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+
+    this.dataSource.filter = filterValue;
+
   }
 
 }

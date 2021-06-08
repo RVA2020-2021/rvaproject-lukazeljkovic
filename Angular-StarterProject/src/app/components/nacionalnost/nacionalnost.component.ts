@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Nacionalnost } from 'src/app/models/nacionalnost'
@@ -17,6 +19,10 @@ export class NacionalnostComponent implements OnInit,OnDestroy {
   dataSource: MatTableDataSource<Nacionalnost>
   subscription : Subscription
 
+
+  @ViewChild(MatSort,{static:false}) sort:MatSort
+  @ViewChild(MatPaginator,{static:false}) paginator:MatPaginator
+
   constructor(private nacionalnostService : NacionalnostService,
     private dialog: MatDialog) { }
   ngOnDestroy(): void {
@@ -32,6 +38,8 @@ public loadData() {
       data => {
         console.log(data)
         this.dataSource = new MatTableDataSource(data)
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
     ),
     (error:Error) => {
@@ -50,6 +58,14 @@ public openDialog(flag:number, id?:number, naziv?:string,skracenica?:string): vo
       this.loadData()
     }
   })
+}
+
+applyFilter(filterValue: string) {
+  filterValue = filterValue.trim();
+  filterValue = filterValue.toLowerCase();
+
+  this.dataSource.filter = filterValue;
+
 }
 
 

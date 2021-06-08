@@ -31,6 +31,9 @@ import { TimDialogComponent } from './components/dialogs/tim-dialog/tim-dialog.c
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { IgracDialogComponent } from './components/dialogs/igrac-dialog/igrac-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -46,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     IgracComponent,
     NacionalnostDialogComponent,
     LigaDialogComponent,
-    TimDialogComponent
+    TimDialogComponent,
+    IgracDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

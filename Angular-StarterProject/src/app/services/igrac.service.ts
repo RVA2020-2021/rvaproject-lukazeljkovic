@@ -17,6 +17,7 @@ export class IgracService {
   }
 
   public addIgracaTima(igrac : Igrac) : Observable<any>{
+    igrac.id = 0;
     return this.httpClient.post(`${IGRAC_URL}`,igrac)
   }
 
